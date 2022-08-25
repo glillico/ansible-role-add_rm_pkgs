@@ -1,0 +1,23 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+
+  pre_tasks:
+    - name: Include variables.
+      include_vars: 'vars/main.yml'
+
+  tasks:
+  - name: Check the package status.
+    package:
+      name: '{{ item.irp_pkg_name }}'
+      state: '{{ item.irp_pkg_state }}'
+    check_mode: yes
+    register: pkg_status
+    with_items: '{{ irp_pkg_list }}'
+
+  - name: Test the package state.
+    assert:
+      that:
+        - not pkg_status.changed

@@ -1,0 +1,6 @@
+---
+# defaults file for ansible-role-add_rm_pkgs
+
+irp_pkg_list:
+  - irp_pkg_name:
+    irp_pkg_state:

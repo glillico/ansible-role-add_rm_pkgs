@@ -1,0 +1,16 @@
+---
+# tasks file for ansible-role-add_rm_pkgs
+
+- name: Install packages.
+  package:
+    name: '{{ item.irp_pkg_name }}'
+    state: '{{ item.irp_pkg_state }}'
+  with_items: '{{ irp_pkg_list }}'
+  when: item.irp_pkg_state == 'present'
+
+- name: Remove packages.
+  package:
+    name: '{{ item.irp_pkg_name }}'
+    state: '{{ item.irp_pkg_state }}'
+  with_items: '{{ irp_pkg_list }}'
+  when: item.irp_pkg_state == 'absent'
