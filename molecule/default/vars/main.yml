@@ -3,7 +3,5 @@
 irp_pkg_list:
   - irp_pkg_name: zsh
     irp_pkg_state: present
-  - irp_pkg_name: zsh-syntax-highlighting.noarch
-    irp_pkg_state: present
   - irp_pkg_name: nginx
     irp_pkg_state: absent
